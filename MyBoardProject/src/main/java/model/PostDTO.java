@@ -5,7 +5,7 @@ public class PostDTO {
 	private int id;             // 게시글 고유 ID (AUTO_INCREMENT)
     private String title;       // 게시글 제목
     private String content;     // 게시글 내용
-    private String author;      // 작성자 이름
+    private String writer;      // 작성자 이름
     private String userid;      // 작성자의 로그인 ID (권한 검사용)
     private String createdAt;   // 작성 시간 (문자열)
 	
@@ -13,11 +13,11 @@ public class PostDTO {
     	
     }
     
-    public PostDTO (int id, String title, String content, String author, String userid, String createdAt) {
+    public PostDTO (int id, String title, String content, String writer, String userid, String createdAt) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.author = author;
+        this.writer = writer;
         this.userid = userid;
         this.createdAt = createdAt;
     }
@@ -47,11 +47,11 @@ public class PostDTO {
     }
 
     public String getAuthor() {
-        return author;
+        return writer;
     }
     
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor(String writer) {
+        this.writer = writer;
     }
 
     public String getUserid() {

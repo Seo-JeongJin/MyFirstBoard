@@ -6,7 +6,7 @@ public class UserDTO {
     private String userid;      // 로그인용 사용자 ID
     private String userpwd;     // 사용자 비밀번호
     private String username;    // 사용자 이름
-    private String createdAt;   // 가입 일자 (문자열로 처리, 필요시 Timestamp 로 변경 가능)
+    private String createdAt;   // 가입 일자
 	
     public UserDTO() {
     	

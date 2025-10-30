@@ -31,6 +31,15 @@ public class RegisterServlet extends HttpServlet {
 		String userpwd = req.getParameter("userpwd");
 		String username = req.getParameter("username");
 		
+		if (userid == null || userid.isBlank() ||
+			userpwd == null || userpwd.isBlank() ||
+			username == null || userpwd.isBlank()) {
+			req.setAttribute("msg", "아이디, 비밀번호, 이름을 모두 입력하세요.");
+			RequestDispatcher rd = req.getRequestDispatcher("register.jsp");
+			rd.forward(req, resp);
+			return;
+		}
+		
 		UserDTO user = new UserDTO();
 		user.setUserid(userid);
 		user.setUserpwd(userpwd);
@@ -41,6 +50,7 @@ public class RegisterServlet extends HttpServlet {
 		if (success) {
 			resp.sendRedirect("login.jsp");
 		} else {
+			// 오류 대비
 			req.setAttribute("msg", "회원가입 실패. 다시 시도 해주세요.");
 			RequestDispatcher rd = req.getRequestDispatcher("register.jsp");
 			rd.forward(req, resp);

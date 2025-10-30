@@ -26,7 +26,7 @@
         if (post == null) {
     %>
     
-        <p>게시글을 불러올 수 없습니다.</p>
+        <a href="list">목록으로</a>
     
     <%
         } else {

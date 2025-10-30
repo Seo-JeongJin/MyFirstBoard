@@ -29,12 +29,12 @@ public class BoardDeleteServlet extends HttpServlet {
 		HttpSession s = req.getSession();
 		String userId = (String) s.getAttribute("userid");
 		
-		String resultMsg = postDAO.deletePost(id, userId);
+		String msg = postDAO.deletePost(id, userId);
 		
-		if (resultMsg.equals("게시글이 삭제되었습니다.")) {
+		if (msg.equals("게시글 삭제")) {
 			resp.sendRedirect("list");
 		} else {
-			req.setAttribute("msg", resultMsg);
+			req.setAttribute("msg", msg);
 			req.setAttribute("post", postDAO.getPostById(id));
 			RequestDispatcher rd = req.getRequestDispatcher("view.jsp");
 			rd.forward(req, resp);

@@ -34,7 +34,7 @@ public class BoardEditServlet extends HttpServlet {
 		
 		PostDTO post = postDAO.getPostById(id);
 		
-		// 작성자 검증
+		// 작성자 아이디와 세션에 저장된 로그인 아이디가 동일하지 않을 때
 		if (!post.getUserid().equals(userId)) {
 			req.setAttribute("msg", "권한이 없습니다.");
 			RequestDispatcher rd = req.getRequestDispatcher("view.jsp");
@@ -64,12 +64,12 @@ public class BoardEditServlet extends HttpServlet {
 		post.setContent(content);
 		post.setUserid(userId);
 		
-		String resultMsg = postDAO.updatePost(post);
+		String msg = postDAO.updatePost(post);
 		
-		if (resultMsg.equals("게시글이 수정되었습니다.")) {
+		if (msg.equals("게시글 수정 완료")) {
 			resp.sendRedirect("view?id="+id);
 		} else {
-			req.setAttribute("msg", resultMsg);
+			req.setAttribute("msg", msg);
 			req.setAttribute("post", postDAO.getPostById(id));
 			RequestDispatcher rd = req.getRequestDispatcher("edit.jsp");
 			rd.forward(req, resp);
